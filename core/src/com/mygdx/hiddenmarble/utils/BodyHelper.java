@@ -3,6 +3,9 @@ package com.mygdx.hiddenmarble.utils;
 import java.util.HashMap;
 import java.util.Map;
 
+import maze.ImmutablePosition;
+import maze.Position;
+
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -15,8 +18,6 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.hiddenmarble.entities.MazeFixtureDef;
-import com.mygdx.hiddenmarble.maze.ImmutablePosition;
-import com.mygdx.hiddenmarble.maze.Position;
 import com.mygdx.hiddenmarble.utils.MazeHelper.MazeDef;
 
 /** Creates Box2D bodies for the game entities. */

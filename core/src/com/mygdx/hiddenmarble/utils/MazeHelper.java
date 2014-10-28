@@ -2,12 +2,13 @@ package com.mygdx.hiddenmarble.utils;
 
 import java.io.Serializable;
 
+import maze.ImmutablePosition;
+import maze.Maze;
+import maze.Position;
+import maze.RecursiveBacktracker;
+import maze.TileMaze;
+
 import com.badlogic.gdx.math.MathUtils;
-import com.mygdx.hiddenmarble.maze.ImmutablePosition;
-import com.mygdx.hiddenmarble.maze.Maze;
-import com.mygdx.hiddenmarble.maze.Position;
-import com.mygdx.hiddenmarble.maze.RecursiveBacktracker;
-import com.mygdx.hiddenmarble.maze.TileMaze;
 
 /**
  * Creates mazes. The mazes will have predetermined exit positions but will vary
@@ -78,7 +79,7 @@ public final class MazeHelper {
 
     /** Contains a tile maze object and start/exit positions. */
     public static class MazeDef implements Serializable {
-        private static final long serialVersionUID = -5713646412372779031L;
+        private static final long serialVersionUID = 7280561842114088170L;
         
         public final TileMaze maze;
         public final Position start;

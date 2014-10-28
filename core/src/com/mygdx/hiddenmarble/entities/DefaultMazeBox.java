@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import maze.Position;
+
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Transform;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
-import com.mygdx.hiddenmarble.maze.Position;
 import com.mygdx.hiddenmarble.utils.BodyHelper;
 import com.mygdx.hiddenmarble.utils.MazeHelper.MazeDef;
 

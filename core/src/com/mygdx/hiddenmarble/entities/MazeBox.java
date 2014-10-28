@@ -2,8 +2,9 @@ package com.mygdx.hiddenmarble.entities;
 
 import java.util.List;
 
+import maze.Position;
+
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.hiddenmarble.maze.Position;
 
 /** A box with a maze inside. */
 public interface MazeBox extends Entity {
