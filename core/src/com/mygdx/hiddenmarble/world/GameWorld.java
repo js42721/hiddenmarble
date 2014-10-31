@@ -37,18 +37,18 @@ public class GameWorld implements Disposable, Serializable {
     /** Box2D velocity threshold for elastic collisions. */
     private static final float VELOCITY_THRESHOLD = 8.0f;
     /** Velocity vector length<sup>2</sup> threshold for the marble roll event. */
-    private static final float LEN2_THRESHOLD = 2.1f;
+    private static final float LEN2_THRESHOLD = 0.0f;
     /** Collision impulse threshold for the marble hit event. */
-    private static final float IMPULSE_THRESHOLD = 8.0f;
+    private static final float IMPULSE_THRESHOLD = 4.2f;
     
     /** Box2D time step in seconds. */
     private static final float TIME_STEP = 1.0f / 45.0f;
     /** Maximum Box2D time steps between frames. */
     private static final int MAX_STEPS_PER_FRAME = 5;
     /** Box2D velocity constraint solver iterations. */
-    private static final int POSITION_ITERATIONS = 3;
+    private static final int POSITION_ITERATIONS = 2;
     /** Box2D position constraint solver iterations. */
-    private static final int VELOCITY_ITERATIONS = 8;
+    private static final int VELOCITY_ITERATIONS = 6;
 
     private Vector2 marblePos;
     private MazeDef mazeDef;

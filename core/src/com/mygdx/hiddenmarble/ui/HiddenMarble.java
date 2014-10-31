@@ -15,7 +15,7 @@ public class HiddenMarble extends Game {
     public static final float BOX2D_SCALE = 1.0f / 32.0f;
     
     /** Multiply accelerometer reading by this for gravity. */
-    public static final float ACCEL_MULTIPLIER = -21.0f;
+    public static final float ACCEL_MULTIPLIER = -8.0f;
 
     /** The location of the save file. */
     public static final String SAVE = ".hidden_marble_save";

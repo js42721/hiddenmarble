@@ -95,8 +95,8 @@ public class WorldRenderer implements GameWorldListener {
      * called in the middle of a transition, nothing will happen and this will
      * return false.
      * 
-     * @param revealed whether the maze should be revealed
-     * @param fadeDuration the duration of the fade animation in seconds
+     * @param  revealed whether the maze should be revealed
+     * @param  fadeDuration the duration of the fade animation in seconds
      * @return true if the reveal status will be affected by the call
      * @throws IllegalArgumentException if fadeDuration is negative
      */
@@ -136,7 +136,7 @@ public class WorldRenderer implements GameWorldListener {
         default:
             return;
         }
-        float volume = Math.min(1.0f, impulse * 0.025f);
+        float volume = Math.min(0.8f, impulse * 0.02f);
         toPlay.play(volume);
     }
 
@@ -144,27 +144,25 @@ public class WorldRenderer implements GameWorldListener {
     public void marbleRoll(float len2, Material material) {
         Music toStop = null;
         Music toPlay = null;
-        float maxVolume = 0.0f;
+        float volume = 0.0f;
         switch (material) {
         case GLASS:
             toStop = Assets.rollWood;
             toPlay = Assets.rollGlass;
-            maxVolume = len2 * 0.0005f;
+            volume = len2 * 0.001f;
             break;
         case WOOD:
             toStop = Assets.rollGlass;
             toPlay = Assets.rollWood;
-            maxVolume = len2 * 0.005f;
+            volume = len2 * 0.01f;
             break;
         default:
             return;
         }
-        if (toStop.isPlaying()) {
-            toStop.pause();
-        }
-        toPlay.setVolume(Math.min(1.0f, maxVolume));
-        toPlay.setLooping(true);
+        toStop.pause();
+        toPlay.setVolume(Math.min(0.5f, volume));
         toPlay.play();
+        toPlay.setLooping(true);
     }
     
     @Override
