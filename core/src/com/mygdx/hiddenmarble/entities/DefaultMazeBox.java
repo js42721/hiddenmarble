@@ -14,7 +14,7 @@ import com.mygdx.hiddenmarble.utils.MazeHelper.MazeDef;
 
 import maze.Point;
 
-/** The default {@code MazeBox} implementation. */
+/** The default MazeBox implementation. */
 public class DefaultMazeBox extends AbstractEntity implements Entity, MazeBox {
     private List<MazeFixtureDef> data;
     private float width;
