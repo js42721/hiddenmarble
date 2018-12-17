@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.hiddenmarble.utils.BodyHelper;
 
-/** The default {@link Marble} implementation. */
+/** The default {@code Marble} implementation. */
 public class DefaultMarble extends AbstractDynamicEntity
         implements Entity, DynamicEntity, Marble {
     
@@ -19,7 +19,7 @@ public class DefaultMarble extends AbstractDynamicEntity
      */
     public DefaultMarble(World world, Vector2 position, float radius) {
         super(BodyHelper.getMarbleBody(world, position, radius));
-        width = radius * 2;
+        width = 2 * radius;
     }
 
     @Override

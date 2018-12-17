@@ -29,7 +29,7 @@ public class SaveState {
             return false;
         }
         try {
-            data = (Data)Serialization.fromString(dataString);
+            data = (Data) Serialization.fromString(dataString);
         } catch (Exception e) {
             return false;
         }

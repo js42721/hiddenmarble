@@ -3,9 +3,6 @@ package com.mygdx.hiddenmarble.utils;
 import java.util.HashMap;
 import java.util.Map;
 
-import maze.ImmutablePosition;
-import maze.Position;
-
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -19,6 +16,9 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.hiddenmarble.entities.MazeFixtureDef;
 import com.mygdx.hiddenmarble.utils.MazeHelper.MazeDef;
+
+import maze.ImmutablePoint;
+import maze.Point;
 
 /** Creates Box2D bodies for the game entities. */
 public final class BodyHelper {
@@ -119,8 +119,8 @@ public final class BodyHelper {
         bodyDef.position.sub(offset);
         Body body = world.createBody(bodyDef);
 
-        Map<Position, Fixture> fixtureMap =
-                new HashMap<Position, Fixture>(height * width);
+        Map<Point, Fixture> fixtureMap =
+                new HashMap<Point, Fixture>(height * width);
         
         /* Sets up the maze wall blocks. */
         for (int y = 0; y < height; ++y) {
@@ -138,7 +138,7 @@ public final class BodyHelper {
                     Fixture fixture = body.createFixture(fixtureDef);
                     fixture.setUserData(new MazeFixtureDef(center, false, false));
                     
-                    fixtureMap.put(new ImmutablePosition(x, y), fixture);
+                    fixtureMap.put(new ImmutablePoint(x, y), fixture);
                     
                     square.dispose();
                 }
@@ -149,15 +149,15 @@ public final class BodyHelper {
         Fixture exitFixture = fixtureMap.get(mazeDef.exit);
         body.destroyFixture(exitFixture);
         
-        Position[] corners = new Position[4];
-        corners[0] = new ImmutablePosition(0, 0);
-        corners[1] = new ImmutablePosition(0, height - 1);
-        corners[2] = new ImmutablePosition(width - 1, height - 1);
-        corners[3] = new ImmutablePosition(width - 1, 0);
+        Point[] corners = new Point[4];
+        corners[0] = new ImmutablePoint(0, 0);
+        corners[1] = new ImmutablePoint(0, height - 1);
+        corners[2] = new ImmutablePoint(width - 1, height - 1);
+        corners[3] = new ImmutablePoint(width - 1, 0);
         
         /* Sets up the corners. */
         for (int i = 0; i < corners.length; ++i) {
-            Position pos = corners[i];
+            Point pos = corners[i];
             Fixture toDestroy = fixtureMap.get(pos);
             Vector2 center = ((MazeFixtureDef)toDestroy.getUserData()).center;
             body.destroyFixture(toDestroy);
@@ -203,7 +203,7 @@ public final class BodyHelper {
      * @throws IllegalArgumentException if the specified position does not
      *         correspond to a corner of the maze
      */
-    private static PolygonShape createCorner(Position pos, Vector2 center,
+    private static PolygonShape createCorner(Point pos, Vector2 center,
             float radius, int mazeWidth, int mazeHeight) {
         
         Vector2 circOrigin = new Vector2(center);
@@ -234,7 +234,7 @@ public final class BodyHelper {
         Vector2[] vertices = new Vector2[vertexCount];
         vertices[0] = circOrigin;
         for (int i = 0; i < vertexCount - 1; ++i) {
-            float angle = (float)i / (vertexCount - 2) * 90.0f * MathUtils.degreesToRadians;
+            float angle = (float) i / (vertexCount - 2) * 90.0f * MathUtils.degreesToRadians;
             Vector2 next = new Vector2(radius, radius);
             next.scl(MathUtils.cos(angle), MathUtils.sin(angle));
             next.scl(rotate);

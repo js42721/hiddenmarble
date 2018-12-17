@@ -136,7 +136,7 @@ public class WorldRenderer implements GameWorldListener {
         default:
             return;
         }
-        float volume = Math.min(0.8f, impulse * 0.02f);
+        float volume = Math.min(0.8f, 0.02f * impulse);
         toPlay.play(volume);
     }
 

@@ -2,9 +2,9 @@ package com.mygdx.hiddenmarble.utils;
 
 import java.io.Serializable;
 
-import maze.ImmutablePosition;
+import maze.ImmutablePoint;
 import maze.Maze;
-import maze.Position;
+import maze.Point;
 import maze.RecursiveBacktracker;
 import maze.TileMaze;
 
@@ -62,19 +62,19 @@ public final class MazeHelper {
      * @return maze definition
      */
     private static MazeDef getMaze(int width, int height) {
-        Position start = new ImmutablePosition(MathUtils.random(0, width - 1), 0);
-        Position startTile = getTileAt(start);
-        Position bottom = new ImmutablePosition(width / 2, height - 1);
-        Position bottomTile = getTileAt(bottom);
-        Position exitTile = new ImmutablePosition(bottomTile.getX(), bottomTile.getY() + 1);
+        Point start = new ImmutablePoint(MathUtils.random(0, width - 1), 0);
+        Point startTile = getTileAt(start);
+        Point bottom = new ImmutablePoint(width / 2, height - 1);
+        Point bottomTile = getTileAt(bottom);
+        Point exitTile = new ImmutablePoint(bottomTile.getX(), bottomTile.getY() + 1);
         Maze maze = new RecursiveBacktracker(width, height);
         maze.generate();
         return new MazeDef(new TileMaze(maze), startTile, exitTile);
     }
 
     /** Converts a wall-based maze position into a tile-based one. */
-    private static Position getTileAt(Position p) {
-        return new ImmutablePosition(p.getX() * 2 + 1, p.getY() * 2 + 1);
+    private static Point getTileAt(Point p) {
+        return new ImmutablePoint(2 * p.getX() + 1, 2 * p.getY() + 1);
     }
 
     /** Contains a tile maze object and start/exit positions. */
@@ -82,10 +82,10 @@ public final class MazeHelper {
         private static final long serialVersionUID = 7280561842114088170L;
         
         public final TileMaze maze;
-        public final Position start;
-        public final Position exit;
+        public final Point start;
+        public final Point exit;
 
-        public MazeDef(TileMaze maze, Position start, Position exit) {
+        public MazeDef(TileMaze maze, Point start, Point exit) {
             this.maze = maze;
             this.start = start;
             this.exit = exit;

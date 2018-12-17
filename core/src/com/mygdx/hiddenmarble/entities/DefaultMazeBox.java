@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import maze.Position;
-
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Transform;
@@ -14,7 +12,9 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.hiddenmarble.utils.BodyHelper;
 import com.mygdx.hiddenmarble.utils.MazeHelper.MazeDef;
 
-/** The default {@link MazeBox} implementation. */
+import maze.Point;
+
+/** The default {@code MazeBox} implementation. */
 public class DefaultMazeBox extends AbstractEntity implements Entity, MazeBox {
     private List<MazeFixtureDef> data;
     private float width;
@@ -45,7 +45,7 @@ public class DefaultMazeBox extends AbstractEntity implements Entity, MazeBox {
     }
 
     @Override
-    public Vector2 getTileLocation(Position position) {
+    public Vector2 getTileLocation(Point position) {
         Vector2 ret = new Vector2(position.getX(), getHeight() - position.getY() - 1);
         Transform transform = getTransform();
         transform.mul(ret);
@@ -61,7 +61,7 @@ public class DefaultMazeBox extends AbstractEntity implements Entity, MazeBox {
         Array<Fixture> fixtures = getBody().getFixtureList();
         List<MazeFixtureDef> ret = new ArrayList<MazeFixtureDef>(fixtures.size);
         for (Fixture f : fixtures) {
-            MazeFixtureDef d = (MazeFixtureDef)f.getUserData();
+            MazeFixtureDef d = (MazeFixtureDef) f.getUserData();
             ret.add(d);
         }
         return ret;

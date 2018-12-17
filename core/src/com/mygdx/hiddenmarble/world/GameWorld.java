@@ -294,9 +294,9 @@ public class GameWorld implements Disposable, Serializable {
                  * A ClassCastException could be thrown here if the user data
                  * of a body doesn't point to an entity for some reason.
                  */
-                Entity entityA = (Entity)a.getBody().getUserData();
+                Entity entityA = (Entity) a.getBody().getUserData();
                 Fixture otherFixture = entityA instanceof DefaultMarble ? b : a;
-                Entity otherEntity = (Entity)otherFixture.getBody().getUserData();
+                Entity otherEntity = (Entity) otherFixture.getBody().getUserData();
                 Material material = Material.getType(otherEntity);
                 
                 /* Marble-hitting-wall event. */
